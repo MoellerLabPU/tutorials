@@ -132,6 +132,53 @@ Host cornell
 ssh cornell
 ```
 
+## Multiple servers
+
+### Multiple Keys for Different Servers (recommended)
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/id_server1 -C "server1@example.com"
+ssh-keygen -t ed25519 -f ~/.ssh/id_server2 -C "server2@example.com"
+```
+
+Add the key to `~/.ssh/authorized_keys` in the remote server.
+
+Configure in `~/.ssh/config`:
+
+```bash
+Host server1
+    HostName server1.example.com
+    User username
+    IdentityFile ~/.ssh/id_server1
+
+Host server2
+    HostName server2.example.com
+    User username
+    IdentityFile ~/.ssh/id_server2
+```
+
+### Use the same key for multiple servers
+
+Add the old key to `~/.ssh/authorized_keys` in the remote server.
+
+```bash
+nano ~/.ssh/config
+
+# Already present
+Host cornell
+    HostName cbsumoeller.biohpc.cornell.edu
+    User sidd
+    IdentityFile ~/.ssh/id_ed25519
+    ProxyJump sidd@cbsulogin.biohpc.cornell.edu
+
+# New
+Host cornell2
+    HostName cbsumoeller02.biohpc.cornell.edu
+    User sidd
+    IdentityFile ~/.ssh/id_ed25519
+    ProxyJump sidd@cbsulogin.biohpc.cornell.edu
+```
+
 ## Security Best Practices
 
 ### Protect Your Private Key
