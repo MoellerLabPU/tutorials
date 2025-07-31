@@ -122,10 +122,10 @@ In case you need to setup a proxy jump or a tunnel, eg. when you need to first l
 nano ~/.ssh/config
 
 Host cornell
-    HostName cbsumoeller.biohpc.cornell.edu
+    HostName <ip.adress.of.compute.node>
     User suppal
     IdentityFile ~/.ssh/id_ed25519
-    ProxyJump sidd@cbsulogin.biohpc.cornell.edu
+    ProxyJump sidd@<ip.adress.of.login.node>
 ```
 
 ```bash
@@ -166,17 +166,17 @@ nano ~/.ssh/config
 
 # Already present
 Host cornell
-    HostName cbsumoeller.biohpc.cornell.edu
+    HostName <ip.adress.of.compute.node>
     User sidd
     IdentityFile ~/.ssh/id_ed25519
-    ProxyJump sidd@cbsulogin.biohpc.cornell.edu
+    ProxyJump sidd@<ip.adress.of.login.node>
 
 # New
 Host cornell2
-    HostName cbsumoeller02.biohpc.cornell.edu
+    HostName <ip.adress.of.compute.node.02>
     User sidd
     IdentityFile ~/.ssh/id_ed25519
-    ProxyJump sidd@cbsulogin.biohpc.cornell.edu
+    ProxyJump sidd@<ip.adress.of.login.node>
 ```
 
 ## Security Best Practices
